@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+#motivation 
+{
+	color: white;
+	position: absolute;
+	text-outline: 2px 2px #ffffff;
+}

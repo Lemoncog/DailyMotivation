@@ -1,0 +1,25 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<polymer-element name="motivation-home" attributes="">
+  <template>
+    <link rel="stylesheet" href="motivation-home.css">
+    <h1 id="motivation">{{motivation}}<h1>
+    <img src="http://lorempixel.com/g/{{width}}/{{height}}/nature/">
+  </template>
+  <script>
+    (function () {
+
+      function generateMotivation() {
+        return lorem.ipsum("lorem_s5$400");
+      }
+
+      Polymer({
+        // define element prototype here
+        motivation : generateMotivation(),
+        width : window.innerWidth,
+        height : window.innerHeight
+      });
+
+    })();
+  </script>
+</polymer-element>
