@@ -4,6 +4,7 @@
   <template>
     <link rel="stylesheet" href="motivation-home.css">
     <h1 id="motivation">{{motivation}}<h1>
+    <h2 id="author">- {{author}} ({{date}})</h2>
     <img id="background" src="http://lorempixel.com/g/{{width}}/{{height}}/nature/">
   </template>
   <script>
@@ -16,6 +17,8 @@
       Polymer({
         // define element prototype here
         motivation : generateMotivation(),
+        author : "Henry Edward",
+        date : "22/01/15",
         width : window.innerWidth,
         height : window.innerHeight
       });
