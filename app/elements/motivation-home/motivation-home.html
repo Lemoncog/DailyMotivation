@@ -14,7 +14,22 @@
         return lorem.ipsum("lorem_s5$400");
       }
 
+      $.getJSON( "../../data/safeReviews.json", function( data ) {
+          console.log("JSON response = " + data);
+
+          var count = data.length;
+
+          var pickedIndex = Math.random() * count;
+
+          var review =  data[pickedIndex];
+
+          this.author = "Matt Williams";
+
+          console.log(review);
+      });
+
       Polymer({
+
         // define element prototype here
         motivation : generateMotivation(),
         author : "Henry Edward",
