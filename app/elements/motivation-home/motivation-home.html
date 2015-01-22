@@ -1,10 +1,14 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icons/core-icons.html">
 
 <polymer-element name="motivation-home" attributes="">
   <template>
     <link rel="stylesheet" href="motivation-home.css">
-    <h1 id="motivation">{{motivation}}<h1>
-    <h2 id="author">- {{author}} ({{date}})</h2>
+    <template repeat="{{motivation.stars}}">
+        <core-icon id="stars" icon="star"></core-icon> 
+    </template>
+    <h1 id="motivation">{{motivation.review}}<h1>
+    <h2 id="author">- {{motivation.author}} ({{motivation.date}})</h2>
     <img id="background" src="http://lorempixel.com/g/{{width}}/{{height}}/nature/">
   </template>
   <script>
@@ -14,26 +18,35 @@
         return lorem.ipsum("lorem_s5$400");
       }
 
+      polymerScope = this;
+      motivation = 
+      {
+        review : generateMotivation(),
+        author : "Google Play Reviewer",
+        date : "22/01/15",
+        stars : [{}, {}, {}]
+      }
+
       $.getJSON( "../../data/safeReviews.json", function( data ) {
           console.log("JSON response = " + data);
 
-          var count = data.length;
+          var count = data.length-1;
 
-          var pickedIndex = Math.random() * count;
+          var pickedIndex = Math.round((Math.random() * count));
 
           var review =  data[pickedIndex];
+          var starRating = new Array(review["Star Rating"] + 0);
 
-          this.author = "Matt Williams";
+          polymerScope.motivation.review = review["Review Text"];
+          polymerScope.motivation.stars = starRating;
 
-          console.log(review);
+          console.log(starRating);
       });
 
       Polymer({
 
         // define element prototype here
-        motivation : generateMotivation(),
-        author : "Henry Edward",
-        date : "22/01/15",
+        motivation : motivation,
         width : window.innerWidth,
         height : window.innerHeight
       });
