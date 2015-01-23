@@ -4,11 +4,17 @@
 <polymer-element name="motivation-home" attributes="">
   <template>
     <link rel="stylesheet" href="motivation-home.css">
-    <template repeat="{{motivation.stars}}">
-        <core-icon id="stars" icon="star"></core-icon> 
-    </template>
-    <h1 id="motivation">{{motivation.review}}<h1>
-    <h2 id="author">- {{motivation.author}} ({{motivation.date}})</h2>
+    <div id="root" layout vertical>
+      <div horizontal end-justified layout>
+        <!-- <template repeat="{{motivation.stars}}">
+            <core-icon id="stars" icon="star"></core-icon> 
+        </template> -->
+      </div>
+      <h1 id="motivation">{{motivation.review}}<h1>
+      <div horizontal end-justified layout>
+        <h2 id="author">- {{motivation.author}} ({{motivation.date}})</h2>
+      </div>
+    </div>
     <img id="background" src="http://lorempixel.com/g/{{width}}/{{height}}/nature/">
   </template>
   <script>
